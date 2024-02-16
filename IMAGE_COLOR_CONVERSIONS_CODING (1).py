@@ -8,6 +8,12 @@
 
 #read and diplay image
 #Type ur code here
+    import cv2
+    image=cv2.imread('gtr.jpg',1)
+    image=cv2.resize(image,(400,300))
+    cv2.imshow('Athmaj Venugopal',image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
 
 # In[ ]:
@@ -15,10 +21,14 @@
 
 #WRITE AN IMAGE
 #Type ur code here
+    import cv2
+    image=cv2.imread('gtr.jpg',0)
+    cv2.imwrite('vintage.jpg',image)
 
 # Save the original image to a file
 original_output_path = "image path"
 #Type ur code here
+
 cv2.imwrite(original_output_path, image)
 print(f"Original image saved to: {original_output_path}")
 
@@ -40,6 +50,18 @@ print(f"Saved image saved to: {new_output_path}")
 #ACCESSING ROWS AND COLUMNS
 #Type ur code here
 # Get the shape of the image (rows, columns, channels)
+    import random
+    import cv2
+    image=cv2.imread('gtr.jpg',1)
+    image=cv2.resize(image,(400,400))
+    for i in range (150,200):
+      for j in range(image.shape[1]):
+          image[i][j]=[random.randint(0,255),
+                       random.randint(0,255),
+                       random.randint(0,255)] 
+    cv2.imshow('part image',image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
 print(f"Image Shape: Rows={rows}, Columns={columns}, Channels={channels}")
 
@@ -57,6 +79,14 @@ image[:, 0] = np.random.randint(0, 256, size=(rows, channels))  # Random values 
 #Cut and paste the image
 
 #Type ur code here
+   import cv2
+   image=cv2.imread('gtr.jpg',1)
+   image=cv2.resize(image,(400,400))
+   tag =image[130:200,110:190]
+   image[110:180,120:200] = tag
+   cv2.imshow('partimage1',image)
+   cv2.waitKey(0)
+   cv2.destroyAllWindows()
 # Display the original image
 
 #Type ur code here
@@ -95,6 +125,20 @@ image_hsv_bgr = cv2.cvtColor(image_bgr, )
 
 # Display the original BGR image
 #Type ur code here
+import cv2
+img = cv2.imread('gtr.jpg',1)
+img = cv2.resize(img,(300,200))
+cv2.imshow('Original Image',img)
+hsv1 = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
+cv2.imshow('BGR2HSV',hsv1)
+hsv2 = cv2.cvtColor(img,cv2.COLOR_RGB2HSV)
+cv2.imshow('RGB2HSV',hsv2)
+gray1 = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+cv2.imshow('BGR2GRAY',gray1)
+gray2 = cv2.cvtColor(img,cv2.COLOR_RGB2GRAY)
+cv2.imshow('RGB2GRAY',gray2)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 # Display the HSV image (BGR and RGB converted)
 #Type ur code here
 # Display the Grayscale image (BGR and RGB converted)
@@ -127,6 +171,17 @@ cv2_imshow(image_hsv)
 # Display the RGB image (HSV to RGB)
 print("HSV TO RGB")
 #Type ur code here
+import cv2
+img = cv2.imread('gtr.jpg')
+img = cv2.resize(img,(300,200))
+img = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
+cv2.imshow('Original HSV Image',img)
+RGB = cv2.cvtColor(img,cv2.COLOR_HSV2RGB)
+cv2.imshow('2HSV2BGR',RGB)
+BGR = cv2.cvtColor(img,cv2.COLOR_HSV2BGR)
+cv2.imshow('HSV2RGB',BGR)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 
 # Display the BGR image (HSV to BGR)
 
@@ -156,6 +211,16 @@ image_ycrcb_rgb = cv2.cvtColor(image_rgb, cv2.COLOR_RGB2YCrCb)
 # Display the YCrCb image (RGB to YCrCb)
 
 #Type ur code here
+import cv2
+img = cv2.imread('gtr.jpg')
+img = cv2.resize(img,(300,200))
+cv2.imshow('Original RGB Image',img)
+YCrCb1 = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
+cv2.imshow('RGB-2-YCrCb',YCrCb1)
+YCrCb2 = cv2.cvtColor(img, cv2.COLOR_RGB2YCrCb)
+cv2.imshow('BGR-2-YCrCb',YCrCb2)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 
 
 # In[ ]:
@@ -178,6 +243,19 @@ cv2_imshow(blue_channel)
 # Merge the RGB channels back together
 
 #Type ur code here
+import cv2
+img = cv2.imread('gtr.jpg',1)
+img = cv2.resize(img,(300,200))
+R = img[:,:,2]
+G = img[:,:,1]
+B = img[:,:,0]
+cv2.imshow('R-Channel',R)
+cv2.imshow('G-Channel',G)
+cv2.imshow('B-Channel',B)
+merged = cv2.merge((B,G,R))
+cv2.imshow('Merged RGB image',merged)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 # Display the merged image
 #Type ur code here
 
@@ -187,6 +265,18 @@ cv2_imshow(blue_channel)
 
 ##Split and merge HSV Image
 #Type ur code here
+import cv2
+img = cv2.imread("gtr.jpg",1)
+img = cv2.resize(img,(300,200))
+img=cv2.cvtColor(img,cv2.COLOR_RGB2HSV)
+H,S,V=cv2.split(img)
+cv2.imshow('Hue',H)
+cv2.imshow('Saturation',S)
+cv2.imshow('Value',V)
+merged = cv2.merge((H,S,V))
+cv2.imshow('Merged',merged)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 # Convert BGR to HSV
 #Type ur code here
 
